@@ -1,6 +1,7 @@
+package org.example;
+import org.apache.commons.cli.Options;
 import java.io.IOException;
 import java.util.Scanner;
-
 import static java.lang.System.exit;
 
 public class Main {
@@ -9,7 +10,7 @@ public class Main {
         System.out.println("----------------------");
         System.out.println("Welcome to Cloudwrap!");
         System.out.println("----------------------");
-
+        Options options = new Options();
         Scanner scanTool = new Scanner(System.in);
         Parser parseTool = new Parser();
         Wrapper wrapTool = new Wrapper();
@@ -70,9 +71,12 @@ public class Main {
 
         */
         //pass to shell script for tf deployment
-        System.out.println("Passing variables to Terraform deployment script");
-        String[] cmd = { "bash", "-c", "~/path/to/shellscript.sh foo bar" };
+        System.out.println("Stub -> Passing variables to Terraform deployment script");
+        //needs to take variables as input, i.e cloud platform, single deploy, potentially config?
+        String scriptCall = "/terraform/deploy.sh foo bar";
+        String[] cmd = { "bash", "-c", scriptCall };
         try {
+
             Process p = Runtime.getRuntime().exec(cmd);
         } catch (IOException e) {
             throw new RuntimeException(e);
